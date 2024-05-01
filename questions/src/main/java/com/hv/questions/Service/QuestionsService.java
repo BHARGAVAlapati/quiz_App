@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hv.questions.DTO.QuestionDTO;
 import com.hv.questions.DTO.QuestionsDTO;
 import com.hv.questions.Entity.Questions;
 import com.hv.questions.Repository.QuestionsRepository;
@@ -51,6 +52,24 @@ public class QuestionsService {
 	public List<Questions> getAllQuestionsByCategory(String questionType) {
 		List<Questions> ques=qRepo.getAllQuestionsByCategory(questionType);
 		return ques;
+	}
+
+	public List<QuestionDTO> getQuizQuestions(String quiztype, int numQ) {
+		List<Questions> ques=qRepo.getQuizQuestions(quiztype,numQ);
+		List<QuestionDTO> response=new ArrayList<>();
+		for(Questions q:ques) {
+			QuestionDTO quesDTO= new QuestionDTO();
+			quesDTO.setId(q.getId());
+			quesDTO.setQuestionTittle(q.getQuestionTittle());
+			quesDTO.setQuestionType(q.getQuestionType());
+			quesDTO.setOption1(q.getOption1());
+			quesDTO.setOption2(q.getOption2());
+			quesDTO.setOption3(q.getOption3());
+			quesDTO.setOption4(q.getOption4());
+			quesDTO.setDiffucltyLevel(q.getDiffucltyLevel());
+			response.add(quesDTO);
+		}
+		return response;
 	}
 
 }

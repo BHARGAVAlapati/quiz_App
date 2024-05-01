@@ -1,5 +1,9 @@
 package com.hv.quiz.Repository;
 
-public class QuizRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.hv.quiz.Entity.Quiz;
+
+public interface QuizRepository extends JpaRepository<Quiz, Integer> {
 
 }

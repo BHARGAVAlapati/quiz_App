@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hv.questions.DTO.QuestionDTO;
 import com.hv.questions.DTO.QuestionsDTO;
 import com.hv.questions.Entity.Questions;
 import com.hv.questions.Service.QuestionsService;
@@ -39,6 +40,13 @@ public class QuestionsController {
 	public ResponseEntity<List<Questions>> getAllQuestionsByCategory(@PathVariable("questionType") String questionType){
 		List<Questions> quesCategory=qser.getAllQuestionsByCategory(questionType);
 		return new ResponseEntity<>(quesCategory,HttpStatus.OK);
+	}
+	
+	@GetMapping("/{quiztype}-Quiz/{numQ}")
+	public ResponseEntity<List<QuestionDTO>> getQuizQuestions(@PathVariable("quiztype") String quiztype,@PathVariable("numQ") int numQ){
+		List<QuestionDTO> quizQue=qser.getQuizQuestions(quiztype,numQ);
+		return new ResponseEntity<>(quizQue,HttpStatus.OK);
+		
 	}
 
 }

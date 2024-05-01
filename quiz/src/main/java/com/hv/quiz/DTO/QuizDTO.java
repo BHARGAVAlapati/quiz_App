@@ -6,7 +6,7 @@ public class QuizDTO {
 	
 	private Integer qid;
 	private String name;
-	private List<String> questions;
+	private List<QuestionsDTO> questions;
 	public Integer getQid() {
 		return qid;
 	}
@@ -19,10 +19,10 @@ public class QuizDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public List<String> getQuestions() {
+	public List<QuestionsDTO> getQuestions() {
 		return questions;
 	}
-	public void setQuestions(List<String> questions) {
+	public void setQuestions(List<QuestionsDTO> questions) {
 		this.questions = questions;
 	}
 	
