@@ -1,7 +1,12 @@
-package com.h3m.User.DTO;
+package com.h3m.User.Entity;
 
-public class UserDTO {
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
+public class Users {
 	
+	@Id
 	private String userId;
 	private String userName;
 	private String firstName;
@@ -12,12 +17,6 @@ public class UserDTO {
 	private String location;
 	private String userRole;
 	
-	public String getUserPassword() {
-		return userPassword;
-	}
-	public void setUserPassword(String userPassword) {
-		this.userPassword = userPassword;
-	}
 	public String getUserRole() {
 		return userRole;
 	}
@@ -66,5 +65,12 @@ public class UserDTO {
 	public void setLocation(String location) {
 		this.location = location;
 	}
-
+	public String getUserPassword() {
+		return userPassword;
+	}
+	public void setUserPassword(String userPassword) {
+		this.userPassword = userPassword;
+	}
+	
+	
 }
