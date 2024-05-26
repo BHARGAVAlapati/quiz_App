@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import com.hv.quiz.DTO.ResponseDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,12 +51,14 @@ public class QuizService {
 		for(QuestionsDTO questions:quizques) {
 			QuizDetails qD=new QuizDetails();
 			qD.setqId(q.getqId());
+			qD.setQuestionId(questions.getId());
 			qD.setQuestionTittle(questions.getQuestionTittle());
 			qD.setOption1(questions.getOption1());
 			qD.setOption2(questions.getOption2());
 			qD.setOption3(questions.getOption3());
 			qD.setOption4(questions.getOption4());
 			qD.setQuestionType(questions.getQuestionType());
+			qD.setRightAnswer(questions.getRightAnswer());
 			quizDe.add(qD);
 			//quizDetailsRepo.save(qD);
 		}
@@ -117,4 +120,20 @@ public class QuizService {
 		
 	}
 
+	public Integer submitQuiz(int id,List<ResponseDTO> responseDTO){
+		QuizService qs=new QuizService();
+		QuizDTO quizDTO=qs.getQuizById(id);
+		int result=0;
+		int count=0;
+		List<QuestionsDTO> questions = quizDTO.getQuestions();
+		for(ResponseDTO response: responseDTO){
+			if(response.getQuestionID().equals(questions.get(count).getQuestionId()) &&
+					response.getResponse().equals(questions.get(count).getRightAnswer())){
+
+				result++;
+			}
+			count++;
+		}
+		return result;
+	}
 }

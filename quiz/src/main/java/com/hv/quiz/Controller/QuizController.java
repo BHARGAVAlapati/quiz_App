@@ -6,15 +6,11 @@ package com.hv.quiz.Controller;
 
 import java.util.List;
 
+import com.hv.quiz.DTO.ResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 import com.hv.quiz.DTO.QuizDTO;
@@ -45,4 +41,9 @@ public class QuizController {
 		return new ResponseEntity<>(quiz,HttpStatus.OK);
 	}
 
+	@GetMapping("/{Id}/getResult")
+	ResponseEntity<Integer> submitQuiz(@PathVariable("Id") int Id, @RequestBody List<ResponseDTO> responses){
+		Integer result= quizSer.submitQuiz(Id,responses);
+		return new ResponseEntity<>(result,HttpStatus.OK);
+	}
 }

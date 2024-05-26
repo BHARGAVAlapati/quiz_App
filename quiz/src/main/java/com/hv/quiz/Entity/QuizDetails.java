@@ -13,6 +13,7 @@ public class QuizDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer Id;
+	private Integer questionId;
 	private Integer qId;
 	private String questionType;
 	private String questionTittle;
@@ -20,8 +21,24 @@ public class QuizDetails {
 	private String option2;
 	private String option3;
 	private String option4;
-	
-	
+	private String rightAnswer;
+
+	public String getRightAnswer() {
+		return rightAnswer;
+	}
+
+	public void setRightAnswer(String rightAnswer) {
+		this.rightAnswer = rightAnswer;
+	}
+
+	public Integer getQuestionId() {
+		return questionId;
+	}
+
+	public void setQuestionId(Integer questionId) {
+		this.questionId = questionId;
+	}
+
 	public Integer getqId() {
 		return qId;
 	}

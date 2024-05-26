@@ -43,8 +43,8 @@ public class QuestionsController {
 	}
 	
 	@GetMapping("/{quiztype}-Quiz/{numQ}")
-	public ResponseEntity<List<QuestionDTO>> getQuizQuestions(@PathVariable("quiztype") String quiztype,@PathVariable("numQ") int numQ){
-		List<QuestionDTO> quizQue=qser.getQuizQuestions(quiztype,numQ);
+	public ResponseEntity<List<QuestionsDTO>> getQuizQuestions(@PathVariable("quiztype") String quiztype,@PathVariable("numQ") int numQ){
+		List<QuestionsDTO> quizQue=qser.getQuizQuestions(quiztype,numQ);
 		return new ResponseEntity<>(quizQue,HttpStatus.OK);
 		
 	}

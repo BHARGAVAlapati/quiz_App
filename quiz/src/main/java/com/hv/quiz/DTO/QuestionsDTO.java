@@ -3,17 +3,34 @@ package com.hv.quiz.DTO;
 public class QuestionsDTO {
 	
 	private Integer id;
+	private Integer questionId;
 	private String questionType;
 	private String questionTittle;
 	private String option1;
 	private String option2;
 	private String option3;
 	private String option4;
+	private String rightAnswer;
+
+	public String getRightAnswer() {
+		return rightAnswer;
+	}
+
+	public void setRightAnswer(String rightAnswer) {
+		this.rightAnswer = rightAnswer;
+	}
+
 	public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	public Integer getQuestionId() {
+		return questionId;
+	}
+	public void setQuestionId(Integer questionId) {
+		this.questionId = questionId;
 	}
 	public String getQuestionType() {
 		return questionType;
